@@ -8,7 +8,7 @@ const authRoutes = require('./routes/authRoutes')
 const cors = require('cors')
 require('./db/connection')
 
-
+//hello
 app.use(cors())
 app.use(morgan('tiny'))
 app.use(express.json())
