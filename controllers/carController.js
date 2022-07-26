@@ -1,15 +1,30 @@
 const Car = require('../model/Car')
 
 const index = (req, res) => {
-    Car.find({}, (err, cars)=>{
+    let query = null
+    if(req.query.search){
+        query = Car.find({title:new RegExp(req.query.search,'i')})
+    }else{
+        query =Car.find({})
+    }
+
+    query.exec((err,cars) => {
         if(err){
             res.status(400).json(err)
             return
         }
-
         res.json(cars)
-
     })
+
+    // Car.find({}, (err, cars)=>{
+    //     if(err){
+    //         res.status(400).json(err)
+    //         return
+    //     }
+
+    //     res.json(cars)
+
+    // })
 }
 
 const carDetails = (req, res) => {
