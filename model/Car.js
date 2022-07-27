@@ -11,6 +11,8 @@ const carSchema = new mongoose.Schema({
   color: String,
   notes: String,
   ownerInfo: String,
+  make: String,
+  model: String
 });
 
 const Car = mongoose.model("Car", carSchema);
