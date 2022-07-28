@@ -4,6 +4,8 @@ const bcrypt = require('bcrypt')
 const User = require('../model/User')
 
 
+
+
 const cars = [
     {   
         image: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y2Fyc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
@@ -15,7 +17,7 @@ const cars = [
         transmission: 'automatic',
         color: 'black',
         notes: 'runs like new',
-        ownerInfo: '322E',
+        owner: '322E',
         make: "Audi",
         model: "RS-7"
     },
@@ -29,7 +31,7 @@ const cars = [
         transmission: 'automatic',
         color: 'bright red',
         notes: 'kkdrgperg',
-        ownerInfo: 'rngegn',
+        owner: 'rngegn',
         make: "Chevrolet",
         model: "Camaro"
     },
@@ -54,7 +56,10 @@ const cars = [
 bcrypt.hash('abc123',2,(err,hash) => {
 User.deleteMany({})
 .then(() =>{
-    User.create({ name: "Sasha", isAdmin: true, password: hash})
+    User.create({ name: "Sasha", isAdmin: true, password: hash},(err,user)=>{
+        cars.map((car) =>{car.owner =user._id})
+
+    })
 })
 .then(() =>{
     Car.deleteMany({})

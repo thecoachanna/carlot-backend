@@ -1,20 +1,19 @@
 const User = require('../model/User')
 
 const addReview = (req, res) => {
-    console.log(req.params.id)
-    User.findById(req.params.id, (err, user) =>{
+    console.log(req.params.userId)
+    User.findById(req.params.userId, (err, user) =>{
     if(err){
         res.status(400).json(err)
         return
     } 
-        console.log(req.user)
-        req.body.reviewer = req.user._id;
+        
         user.reviews.push({"text":req.body.text});
         user.save((err, user,n) => { 
-            res.redirect(`/cars/${req.params.id}`)
+            res.json({text:req.body.text})
             
         })
-        console.log(user.reviews) 
+        // console.log(user.reviews) 
     })
 }
 
