@@ -8,10 +8,10 @@ const addReview = (req, res) => {
     }
     console.log(req.user)
         req.body.reviewer = req.user._id;
-        game.reviews.push(req.body);
-        game.save((err) => {if(err){console.log(err)}})
+        user.reviews.push(req.body);
+        user.save((err) => {if(err){console.log(err)}})
         console.log(user.reviews)
-        res.redirect(`/cars/${user._id}`)
+        res.redirect(`/cars/${cars._id}`)
     })
 }
 

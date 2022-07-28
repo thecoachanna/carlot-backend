@@ -25,3 +25,4 @@ User.findOne({name: req.body.name}, (err, user) => {
 module.exports = {
     login
 }
+
