@@ -12,6 +12,7 @@ const reviewsSchema = new mongoose.Schema({
 const userSchema = new mongoose.Schema({
     isAdmin: Boolean,
     name: String,
+    email: String,
     password: String,
     reviews: [reviewsSchema]
 })
