@@ -17,7 +17,22 @@ const addReview = (req, res) => {
     })
 }
 
+const allReviewHandler = (req,res) => {
+    User.findById(req.params.userId, (err, user) => {
+        if(err){
+            res.status(400).json(err)
+            return
+        }
+        const reviews = []
+        user.reviews.map((item) => reviews.push(item.text))
+        res.json(reviews)
+
+    })
+
+
+}
 module.exports = {
-    addReview
+    addReview,
+    allReviewHandler
 
 }
