@@ -5,6 +5,9 @@ const morgan = require('morgan')
 const carRoutes = require('./routes/carRoutes')
 const authRoutes = require('./routes/authRoutes')
 const userRoutes = require('./routes/userRoutes')
+
+require('dotenv').config()
+
  
 const cors = require('cors')
 require('./db/connection')
