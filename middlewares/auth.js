@@ -1,21 +1,26 @@
 const jwt = require('jsonwebtoken')
+
 require('dotenv').config()
-const SECRET =process.env.SECRET
+const SECRET = process.env.SECRET
 
-function authMiddleware(req,res,next){
+function authMiddleware(req, res, next) {
     let token = req.get('Authorization')
+    // console.log(token)
+    if (token){
+        token = token.replace('Bearer ', '')
 
-    if(token){
-        token =token.replace('Bearer ','')
-        jwt.verify(token,SECRET,function(err,decoded){
-            if(err) next(err)
-            req.user =decoded 
+        jwt.verify(token, SECRET, function(err, decoded) {
+            if (err) next(err)
+    
+            req.user = decoded
             next()
     
         })
-    }else{
+
+    } else {
         res.status(403).json({})
     }
+
     
 }
 
