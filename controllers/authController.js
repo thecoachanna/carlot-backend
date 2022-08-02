@@ -46,7 +46,7 @@ function signup(req, res) {
             return
         }
         User.create({email: email, password:pass1}, (err, newUser) => {
-            res.json({token: createToken({
+            res.json({access: createToken({
                 email: newUser.email,
                 id: newUser._id,
             })})
