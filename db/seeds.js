@@ -58,7 +58,7 @@ User.deleteMany({})
 
     User.create({ email: "Sasha", isAdmin: true, password: 'abc123'}, (err, user) => {
         cars.map((car) => {car.owner = user._id})
-        console.log(cars)
+        // console.log(cars)
 
         Car.deleteMany({})
         .then(() => {
