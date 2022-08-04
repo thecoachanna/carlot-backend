@@ -10,12 +10,11 @@ const carSchema = new mongoose.Schema({
   transmission: String,
   color: String,
   notes: String,
-  owner: String,
-//   {
-//     type: mongoose.Schema.Types.ObjectId,
-//     // required: true,
-//     ref: "User"
-// }
+  owner:{
+  type: mongoose.Schema.Types.ObjectId,
+    // required: true,
+    ref: "User"
+},
   make: String,
   model: String
 });
