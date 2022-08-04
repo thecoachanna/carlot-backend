@@ -3,7 +3,7 @@ const Car = require('../model/Car')
 const index = (req, res) => {
     let query = null
     if(req.query.search){
-        query = Car.find({title:new RegExp(req.query.search,'i')})
+        query = Car.find({make:new RegExp(req.query.search,'i')})
     }else{
         query =Car.find({})
     }

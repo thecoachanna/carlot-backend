@@ -95,24 +95,27 @@ const cars = [
 //     process.exit()
 // })
 
-bcrypt.hash('abc123',2,(err,hash) => {
 User.deleteMany({})
 .then(() =>{
-    User.create({ name: "Sasha", isAdmin: true, password: hash},(err,user)=>{
-        cars.map((car) =>{car.owner = user._id})
+
+
+
+    User.create({ email: "Sasha", isAdmin: true, password: 'abc123'}, (err, user) => {
+        cars.map((car) => {car.owner = user._id})
+        // console.log(cars)
+
+        Car.deleteMany({})
+        .then(() => {
+            return Car.insertMany(cars)
+        })
+        .then((insertedCars) =>{
+            console.log(insertedCars)
+        })
+        .catch(err => console.error(err))
+        .finally(() =>{
+            process.exit()
+        })
+
     })
-})
-.then(() =>{
-    Car.deleteMany({})
-    .then(() => {
-        return Car.insertMany(cars)
-    })
-    .then((insertedCars) =>{
-        console.log(insertedCars)
-    })
-    .catch(err => console.error(err))
-    .finally(() =>{
-        process.exit()
-    })
-})
+
 })
