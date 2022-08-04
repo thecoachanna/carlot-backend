@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const carSchema = new mongoose.Schema({
-  image: String,
+  image: [String],
   price: Number,
   title: String,
   location: String,
@@ -10,14 +10,11 @@ const carSchema = new mongoose.Schema({
   transmission: String,
   color: String,
   notes: String,
-  owner: String,
-
-
-  //   owner:{
-//     type: mongoose.Schema.Types.ObjectId,
-//     // required: true,
-//     ref: "User"
-// },
+  owner:{
+  type: mongoose.Schema.Types.ObjectId,
+    // required: true,
+    ref: "User"
+},
   make: String,
   model: String
 });

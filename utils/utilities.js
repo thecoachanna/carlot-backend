@@ -1,6 +1,6 @@
 function payloadFromUser(user){
     return{
-        emai: user.email,
+        email : user.email,
         id:user._id
     }
 }
