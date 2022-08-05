@@ -10,7 +10,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary,
     params: {
-        folder: 'CarShop',
+        folder: 'CarLot',
         allowedFormats: ['jpeg', 'png', 'jpg']
     }    
 })
