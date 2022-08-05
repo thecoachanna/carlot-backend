@@ -1,3 +1,5 @@
+const cloudinary = require('cloudinary').v2
+
 const Car = require('../model/Car')
 
 const index = (req, res) => {
@@ -40,17 +42,39 @@ const carDetails = (req, res) => {
     })
 }
 
-const postNewCar = (req, res) => {
+const postNewCar = async (req, res) => {
+    console.log(req.files)
+    let uploadedImages = []
     
-    Car.create(req.body, (err, car) => {
-        
-        if (err) {
-            res.status(400).json(err)
-            return
-        }
-        car = req.body;
-        res.json(car)
+
+    req.files.forEach((file) => {
+        console.log(file)
+
+        cloudinary.v2.uploader.upload(file.path, (error, result) => {
+            
+
+            const { url } = result
+
+            uploadedImages.push(url)
+            console.log(result, error);
+
+            if (uploadedImages.length === req.files.length) {
+                
+                Car.create({...req.body, images: uploadedImages }, (err, car) => {
+            
+                    if (err) {
+                        res.status(400).json(err)
+                        return
+                    }
+                    car = req.body;
+                    res.json(car)
+                
+                })
+            }
+          });
     })
+    
+    
 }
 
 const updateCar = (req, res) => {
