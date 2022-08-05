@@ -6,6 +6,7 @@ const {payloadFromUser} = require('../utils/utilities')
 const login = (req, res) => {
     const email = req.body.email
     const password = req.body.password
+  
 
     User.findOne({email: new RegExp(email, 'i')}, (err, user) => {
         if(err){
@@ -30,9 +31,10 @@ function signup(req, res) {
     const email = req.body.email
     const pass1 = req.body.pass1
     const pass2 = req.body.pass2
+    const name = req.body.name
 
     if(pass1 !== pass2) {
-        res.status(400).json({password: 'passwords dont match!'})
+        res.status(400).json({password: 'password doesnt match!'})
         return
     }
 
@@ -45,11 +47,8 @@ function signup(req, res) {
             res.status(400).json({email: 'User already exists'})
             return
         }
-        User.create({email: email, password:pass1}, (err, newUser) => {
-            res.json({access: createToken({
-                email: newUser.email,
-                id: newUser._id,
-            })})
+        User.create({email: email, password:pass1,name:name}, (err, newUser) => {
+            res.json({access: createToken(payloadFromUser(newUser))})
         })
 
     })
