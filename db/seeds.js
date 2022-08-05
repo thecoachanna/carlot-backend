@@ -8,14 +8,14 @@ const User = require('../model/User')
 
 const cars = [
     {   
-        image: ['https://images.craigslist.org/00j0j_9HGLm30zRdDz_0CI0t2_600x450.jpg','https://images.craigslist.org/00R0R_2rKDFQb8Gbez_0CI0t2_600x450.jpg', 'https://images.craigslist.org/00j0j_9HGLm30zRdDz_0CI0t2_600x450.jpg'],
+        image: ['https://images.craigslist.org/00j0j_9HGLm30zRdDz_0CI0t2_600x450.jpg','https://images.craigslist.org/00R0R_2rKDFQb8Gbez_0CI0t2_600x450.jpg', 'https://cdn.carbase.com/dealer/lawmotors/5061038_157378176_640.jpg'],
         price: 11500,
         title: "clean",
         location: "Dallas, TX",
         year: 2017,
         mileage: 210000,
         transmission: 'automatic',
-        color: 'res',
+        color: 'red',
         notes: 'like new',
         owner: 'Tom',
         make: "Ford Ranger",
