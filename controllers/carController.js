@@ -1,5 +1,6 @@
 const cloudinary = require('cloudinary').v2
 
+
 const Car = require('../model/Car')
 
 const index = (req, res) => {
@@ -46,6 +47,8 @@ const postNewCar = async (req, res) => {
     console.log(req.files)
     let uploadedImages = []
     
+// cars.images = req.files.map(f => ({ url: f.path, filename: f.filename}))
+
 
     req.files.forEach((file) => {
         console.log(file)
