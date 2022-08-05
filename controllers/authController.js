@@ -34,7 +34,7 @@ function signup(req, res) {
     const name = req.body.name
 
     if(pass1 !== pass2) {
-        res.status(400).json({password: 'password doesnt match!'})
+        res.status(400).json({password: "Password doesn't match!"})
         return
     }
 
