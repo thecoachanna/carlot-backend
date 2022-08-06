@@ -72,7 +72,7 @@ const cars = [
         mileage: 110000,
         transmission: 'automatic',
         color: 'Silver',
-        notes: 'in good codition, but has some dent',
+        notes: 'In good condition, but has some dents',
         owner: 'Jessica',
         make: "Lexus",
         model: "RX 350"
