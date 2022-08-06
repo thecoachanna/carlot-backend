@@ -1,4 +1,5 @@
 const cloudinary = require('cloudinary').v2
+const ObjectId = require('mongoose').Types.ObjectId
 
 
 const Car = require('../model/Car')
@@ -44,11 +45,12 @@ const carDetails = (req, res) => {
 }
 
 const postNewCar = async (req, res) => {
-    console.log(req.files)
+    // console.log(req.files)
     let uploadedImages = []
     
 // cars.images = req.files.map(f => ({ url: f.path, filename: f.filename}))
-const createCar = (uploadedImages) => Car.create({...req.body, images: uploadedImages ?? [] }, (err, car) => {
+owner = new ObjectId(req.user.id)
+const createCar = (uploadedImages) => Car.create({...req.body,owner:owner, images: uploadedImages ?? [] }, (err, car) => {
             
     if (err) {
         res.status(400).json(err)
