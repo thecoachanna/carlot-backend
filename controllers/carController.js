@@ -48,9 +48,18 @@ const postNewCar = async (req, res) => {
     let uploadedImages = []
     
 // cars.images = req.files.map(f => ({ url: f.path, filename: f.filename}))
+const createCar = (uploadedImages) => Car.create({...req.body, images: uploadedImages ?? [] }, (err, car) => {
+            
+    if (err) {
+        res.status(400).json(err)
+        return
+    }
+    car = req.body;
+    res.json(car)
 
+})
 
-    req.files.forEach((file) => {
+    req.files ? req.files.forEach((file) => {
         console.log(file)
 
         cloudinary.v2.uploader.upload(file.path, (error, result) => {
@@ -62,20 +71,11 @@ const postNewCar = async (req, res) => {
             console.log(result, error);
 
             if (uploadedImages.length === req.files.length) {
+                createCar(uploadedImages)
                 
-                Car.create({...req.body, images: uploadedImages }, (err, car) => {
-            
-                    if (err) {
-                        res.status(400).json(err)
-                        return
-                    }
-                    car = req.body;
-                    res.json(car)
-                
-                })
             }
-          });
-    })
+        });
+    }) : createCar()
     
     
 }
