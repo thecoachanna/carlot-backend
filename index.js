@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
-const PORT = normalizePort(process.env.PORT || '4000');
+
+const PORT = process.env.PORT || '4000';
+
 const morgan = require('morgan')
 const carRoutes = require('./routes/carRoutes')
 const authRoutes = require('./routes/authRoutes')
@@ -26,12 +28,6 @@ app.get('/', (req, res) => {
     res.json('Welcome to the Car Shop')
 })
 
-function normalizePort(val) {
-    var port = parseInt(val, 10);
-    if (isNaN(port)) {return val;}
-    if (port >= 0) {return port;}
-    return false;
-  }
 
 app.listen(PORT, ()=> {
     console.log('Connected on', PORT)
