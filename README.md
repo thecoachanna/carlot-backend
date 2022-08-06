@@ -18,5 +18,15 @@ User can post listing to the show page
 
 User can view listing posted as well as other users listings
 
+# Technologies Used
+
+Mongo DB
+
+Node.js
+
+Express
+
+Google Maps
+
 
 
