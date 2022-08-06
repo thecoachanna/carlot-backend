@@ -31,6 +31,12 @@ app.get('/', (req, res) => {
     res.json('Welcome to the Car Shop')
 })
 
+// function normalizePort(val) {
+//     var port = parseInt(val, 10);
+//     if (isNaN(port)) {return val;}
+//     if (port >= 0) {return port;}
+//     return false;
+//   }
 
 
 app.listen(PORT, ()=> {
