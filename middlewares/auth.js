@@ -12,7 +12,7 @@ function authMiddleware(req, res, next) {
         jwt.verify(token, SECRET, function(err, decoded) {
             // if (err) next(err)
     
-            req.user = decoded
+            req.user = decoded.user
             next()
     
         })
