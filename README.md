@@ -14,8 +14,6 @@ User can create account
 
 User can sign in
 
-User can post listing 
+User can post listing to the show page
 
-User can update listing
-
-User can delete listing
+User can view listing posted as well as other users listings
