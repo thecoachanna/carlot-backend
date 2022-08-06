@@ -1,8 +1,7 @@
 const router = require('express').Router()
 const carController = require('../controllers/carController')
-const multer  = require('multer')
-const {storage} = require('../cloudinary')
-const upload = multer({ storage })
+const { upload } = require('../cloudinary')
+
 
 router.use(require('../middlewares/auth'))
 
