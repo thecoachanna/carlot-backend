@@ -1,7 +1,10 @@
 const express = require('express')
 const app = express()
 
+
 const PORT = process.env.PORT || '4000';
+
+
 
 const morgan = require('morgan')
 const carRoutes = require('./routes/carRoutes')
@@ -27,6 +30,7 @@ app.use('/auth', authRoutes)
 app.get('/', (req, res) => {
     res.json('Welcome to the Car Shop')
 })
+
 
 
 app.listen(PORT, ()=> {
