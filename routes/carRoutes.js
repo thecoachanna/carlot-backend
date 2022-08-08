@@ -3,7 +3,7 @@ const carController = require('../controllers/carController')
 const { upload } = require('../cloudinary')
 
 
-router.use(require('../middlewares/auth'))
+// router.use(require('../middlewares/auth'))
 
 router.get('/', carController.index )
 router.get('/:id', carController.carDetails)

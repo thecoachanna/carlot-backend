@@ -5,7 +5,7 @@ const ObjectId = require('mongoose').Types.ObjectId
 const Car = require('../model/Car')
 
 const index = (req, res) => {
-    let query = null
+    let query = null   
     if(req.query.search){
         query = Car.find({make:new RegExp(req.query.search,'i')})
     }else{
@@ -13,6 +13,7 @@ const index = (req, res) => {
     }
 
     query.exec((err,cars) => {
+       
         if(err){
             res.status(400).json(err)
             return
@@ -25,9 +26,7 @@ const index = (req, res) => {
     //         res.status(400).json(err)
     //         return
     //     }
-
     //     res.json(cars)
-
     // })
 }
 
